@@ -1,0 +1,75 @@
+
+[18/03/2024] - Added Static File, fixes views.py, urls.py in 
+C:\Users\Sharmie\AIDM\AI_DungeonMaster\AI_DungeonMaster
+Update about.html
+added CSS, Images, JS, Icons in Static folder
+Settings I added 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Infinite_Questmaster', 'Static'),
+]
+
+STATIC_ROOT = 'C:/Users/Sharmie/AIDM/AI_DungeonMaster/AI_DungeonMaster/static_root'
+(Pwede mo palitan according sa Path mo)
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+'DIRS': [
+            'C:/Users/Sharmie/AIDM/AI_DungeonMaster/Infinite_Questmaster/templates',
+            # Other template directories if any
+        ],
+
+    'django.contrib.staticfiles',+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def home(request):
+    return render(request, 'home.html')
+
+def index(request):
+    # Determine which template to render based on the request
+    template_name = 'home.html'  # Default template is home.html
+
+    if request.path == '/about/':
+        template_name = 'about.html'
+    elif request.path == '/login/':
+        template_name = 'login.html'
+    elif request.path == '/logout/':
+        template_name = 'logout.html'
+
+    return render(request, template_name)
+
+def register(request):
+    # Add your registration logic here
+    return HttpResponse("This is the registration page")
+
+Added Images
+
+[19/03/2024] - Added CSS of Homepage, About, Login, Feedback. 
+Added HTML of About, Nav, Log In, Sign Up, Feedback
+
+Updated URLs, Views
+
+(Wala pang back end yan, DTBS para mainput yung user)
+
+
+For my case:
+
+  'C:/Users/Sharmie/AIDM/AI_DungeonMaster/Infinite_Questmaster/templates',
+
+STATIC_ROOT = os.environ.get('STATIC_ROOT', 'C:/Users/Sharmie/AIDM/AI_DungeonMaster/AI_DungeonMaster/static_root')
+
+my_venv\Scripts\activate
+
+cd my_project
+
+python manage.py runserver 8080
